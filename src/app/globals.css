@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.merienda{
+  font-family: var(--merienda);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media(max-width:900px){
+
+  html{
+  font-size: 80%;
+  }
+}
+
+@media(max-width:1200px){
+  .overlapCard{
+  transform:translateX(0px) translateY(0px) !important;
+
+  }
+
+}
+#overlap:hover .overlapCard{
+  transform:translateX(0px) translateY(0px) !important;
+}
+
+.overlapCard:hover{
+ /* z-index: 50 !important;s */
+}
