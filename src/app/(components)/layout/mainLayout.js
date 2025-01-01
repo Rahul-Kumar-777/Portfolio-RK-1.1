@@ -9,7 +9,7 @@ export default function MainLayout({ children }) {
     <div id="window" className="w-full h-lvh flex flex-col  items-center ">
       {children}
       <div
-        className="flex flex-col py-28 shadow-lg bg-col_9 merienda gap-4 items-center w-full"
+        className="flex flex-col py-28 px-8 shadow-lg bg-col_9 merienda gap-4 items-center w-full"
       >
         <motion.p
           initial={{ y: -40, opacity: 0 }}
@@ -24,7 +24,7 @@ export default function MainLayout({ children }) {
           transition={{ delay: 1 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="text-xl text-col_10 text-center w-[39%]"
+          className="text-xl text-col_10 text-center lg:w-[39%]"
         >
           Creating responsive and visually appealing web experiences tailored to
           your needs.
