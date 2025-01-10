@@ -25,6 +25,8 @@ export default {
         col_8:'#cacdfe',
         col_9:'#F8A78E',
         col_10:'#301006',
+        col_11:'#141640',
+        col_12:'#CACDFE',
         col_green_light:'#d6ffe6'
       },
       animation: {
