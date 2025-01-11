@@ -125,7 +125,7 @@ export default function Main() {
               </div>
             </div>
           </div>
-          <AuroraBackground showRadialGradient={false}></AuroraBackground>
+          <AuroraBackground showRadialGradient={true}></AuroraBackground>
           {/* <div className="flex flex-1 h-full flex-col items-center w-full "></div> */}
         </div>
         <div className="flex flex-col merienda antialiased bg-white  items-center justify-center gap-9 w-full h-[1000px] sticky bottom-0">
@@ -370,7 +370,7 @@ export default function Main() {
           })}
         </div>
       </div>
-      <div className="flex w-full items-center flex-col pt-18 mb-44 bg-white  z-50">
+      <div className="flex w-full items-center flex-col pt-18 pb-[200px] bg-white  z-50">
         <div className="flex w-[70%] max-w-[1200px] z-50 bg-white lg:min-w-[1000px] md:min-w-[500px] min-w-[300px] lg:pl-64 pl-32 flex-col border-l-2 border-black  gap-10 ">
           {dummyContent?.map((data, i) => {
             return (
