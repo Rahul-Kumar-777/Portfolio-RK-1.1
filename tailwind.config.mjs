@@ -1,18 +1,18 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
- 
-const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 /** @type {import('tailwindcss').Config} */
-export default {
- darkMode: false, // Disable dark mode
+module.exports = {
   content: [
+    // your paths
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
+  darkMode: true,
   theme: {
     extend: {
       colors: {
@@ -31,24 +31,24 @@ export default {
         col_green_light:'#d6ffe6'
       },
       animation: {
-        scroll:
-          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        aurora: "aurora 60s linear infinite",
       },
       keyframes: {
-        scroll: {
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
           to: {
-            transform: "translate(calc(-50% - 0.5rem))",
+            backgroundPosition: "350% 50%, 350% 50%",
           },
         },
       },
     },
-  
-    plugins: [addVariablesForColors],
   },
+  plugins: [addVariablesForColors],
 };
 
-
-
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({
   addBase,
   theme

@@ -17,6 +17,12 @@ import {
   IconLink,
 } from "@tabler/icons-react";
 import { FaReact } from "react-icons/fa";
+import { TbBrandNextjs } from "react-icons/tb";
+import { AuroraBackground } from "../ui/aura-background";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
+import Link from "next/link";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function Main() {
   const [height, setHeight] = useState(0);
@@ -26,10 +32,34 @@ export default function Main() {
     // setHeight(document.querySelector(".dd")?.clientHeight);
     console.log("scroll", window.scrollY);
     let element = document.getElementById("window");
+    let mainWorkEle = document.getElementById("my-work");
+    let roverCards = document.querySelectorAll(".rover");
+    let mover = document.getElementById("mover");
+
+    console.log(roverCards, "rover");
+    roverCards?.forEach((ele) => {
+      ele.addEventListener("mouseover", () => {
+        console.log(ele?.offsetWidth, "elee");
+        mover.style.display = "block";
+
+        let width = ele?.offsetWidth;
+        let height = ele?.offsetHeight;
+        let left = ele?.offsetLeft;
+        let top = ele?.offsetTop;
+        mover.style.width = `${width + 15}px`;
+        mover.style.height = `${height + 15}px`;
+        mover.style.left = `${left - 8}px`;
+        mover.style.top = `${top - 7}px`;
+      });
+    });
+    mainWorkEle.addEventListener("mouseleave", () => {
+      mover.style.display = "none";
+    });
     const handleScroll = () => {
       console.log(window.scrollY, "scroll event");
       setScroll(parseInt(window.scrollY));
     };
+
     window.addEventListener("scroll", handleScroll);
   }, []);
 
@@ -37,10 +67,10 @@ export default function Main() {
     <>
       <div
         id="mains"
-        className="flex w-full dd antialiased  flex-col items-center justify-center  "
+        className="flex w-full dd antialiased bg-white  flex-col items-center justify-center  "
       >
         <div
-          className={`w-full bg-white antialiased shadow-lg text-col_3 ${
+          className={`w-full bg-white antialiased shadow-lg text-black ${
             scroll > 10 ? "rounded-b-[66px] " : ""
           } transition-all  flex text-7xl overflow-hidden min-h-lvh z-10  sticky bottom-0  items-center justify-center `}
         >
@@ -53,6 +83,7 @@ export default function Main() {
               fill
               objectFit="cover"
             />
+
             <div className="flex flex-1  gap-4 flex-col items-center h-full justify-center w-full">
               <motion.p
                 initial={{ y: -40, opacity: 0 }}
@@ -73,7 +104,7 @@ export default function Main() {
                 >
                   A dedicated frontend developer
                 </motion.p>
-                {/* <FlipWords words={['React JS','React Native','Next JS']} className={'font-bold text-4xl'} /> */}
+
                 <motion.div
                   initial={{ x: -40, opacity: 0 }}
                   transition={{ delay: 1.5 }}
@@ -81,11 +112,20 @@ export default function Main() {
                   viewport={{ once: true }}
                   className="hover:bg-col_3 text-2xl group border-col_3 bg-transparent transition-all cursor-pointer border-2 rounded-full px-5 py-3"
                 >
-                  <p className="group-hover:text-white text-col_3"> Linkedin</p>
+                  <Link
+                    href={"https://www.linkedin.com/in/rahul-tyagi-b170b61a0"}
+                    target="_blank"
+                  >
+                    <p className="group-hover:text-white text-col_3">
+                      {" "}
+                      Linkedin
+                    </p>
+                  </Link>
                 </motion.div>
               </div>
             </div>
           </div>
+          <AuroraBackground showRadialGradient={false}></AuroraBackground>
           {/* <div className="flex flex-1 h-full flex-col items-center w-full "></div> */}
         </div>
         <div className="flex flex-col merienda antialiased bg-white  items-center justify-center gap-9 w-full h-[1000px] sticky bottom-0">
@@ -132,7 +172,7 @@ export default function Main() {
                       : "",
                 }}
               >
-                <div className="flex h-lvh w-8 bg-white absolute  shadow-xl translate-y-[-1030px] lg:translate-y-[-630px] group-hover:translate-y-[670px] duration-1000 transition-all  z-50  rotate-45 opacity-45"></div>
+                {/* <div className="flex h-lvh w-8 bg-white absolute  shadow-xl translate-y-[-1030px] lg:translate-y-[-630px] group-hover:translate-y-[670px] duration-1000 transition-all  z-50  rotate-45 opacity-45"></div> */}
                 <div className="w-full lg:h-40 md:h-72 h-72 relative rounded-xl overflow-hidden">
                   <Image src={data?.src} fill objectFit="cover" alt="mark" />
                 </div>
@@ -146,38 +186,72 @@ export default function Main() {
           })}
         </div>
       </div>
-      <div className="flex flex-col w-full items-center pb-28 pt-16 min-h-[900px] text-black merienda  ">
-        <div className="flex flex-col  px-12 sticky top-24 lg:w-[800px] md:w-[600px] w-full items-center gap-4">
-          <div className="w-72 h-72 mb-9 rounded-full overflow-hidden relative">
+      <div className="flex flex-col w-full items-center pb-28 pt-16 min-h-[900px] bg-white text-black merienda  ">
+        <div className="flex flex-col  px-12 sticky top-24 lg:w-[900px] md:w-[600px] w-full items-center gap-4">
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="w-72 h-72 mb-9 rounded-full overflow-hidden relative"
+          >
             <Image
+              alt="mark"
               fill
               objectFit="cover"
               src={require("../../../../public/assets/images/author.jpg")}
             />
-          </div>
-          <p className="text-5xl text-center font-bold">
+          </motion.div>
+          <motion.p
+            initial={{ x: -80, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-5xl text-center font-bold"
+          >
             Hi I am Rahul, Nice to meet you
-          </p>
-          <p className=" text-center">
+          </motion.p>
+          <motion.p
+            initial={{ x: -80, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1 }}
+            viewport={{ once: true }}
+            className=" text-center"
+          >
             A dedicated React.js and React Native developer with 3+ years of
             professional experience. Over this time, I have successfully
             developed and delivered multiple projects, demonstrating my
             expertise in creating responsive and user-friendly web and mobile
             applications, I'm quietly confident, naturally curious, and
             perpetually working on improving my chops.
-          </p>
-          <div className="flex items-center gap-6">
-            <div className="p-2 border-black border-2 rounded-full">
-              <IconBrandInstagram size={30} />
-            </div>
-            <div className="p-2 border-black border-2 rounded-full">
-              <IconBrandLinkedin size={30} />
-            </div>
-          </div>
+          </motion.p>
+          <motion.div
+            initial={{ x: -80, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1.5 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-6"
+          >
+            <Link
+              href={"https://www.instagram.com/mark41stark/profilecard/"}
+              target="_blank"
+            >
+              <div className="p-2 border-black border-2 hover:bg-black group cursor-pointer rounded-full">
+                <FaInstagram size={30} className="group-hover:text-white" />
+              </div>
+            </Link>
+            <Link
+              href={"https://www.linkedin.com/in/rahul-tyagi-b170b61a0"}
+              target="_blank"
+            >
+              <div className="p-2 border-black border-2 hover:bg-black group cursor-pointer rounded-full">
+                <FaLinkedinIn size={30} className="group-hover:text-white" />
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center w-full mb-32">
+      <div className="flex flex-col items-center bg-white w-full ">
         <motion.div
           initial={{ transform: "translateY(200px)", opacity: 0 }}
           whileInView={{ transform: "translateY(0px)", opacity: 1 }}
@@ -193,11 +267,16 @@ export default function Main() {
                 <div className="flex flex-col flex-1 gap-5 items-start">
                   <p className="text-5xl">{data?.heading}</p>
                   <p className="text-sm">{data?.subHeading}</p>
-                  <div
-                    className={`px-5 py-3 mt-2 ${data?.border} border-2 rounded-full`}
+                  <Link
+                    href={"https://www.linkedin.com/in/rahul-tyagi-b170b61a0"}
+                    target="_blank"
                   >
-                    <p>Contact </p>
-                  </div>
+                    <div
+                      className={`px-5 py-3 mt-2 ${data?.border} border-2 rounded-full`}
+                    >
+                      <p>Contact </p>
+                    </div>
+                  </Link>
                 </div>
                 <div className="flex flex-col lg:flex-1 w-full  rounded-md overflow-hidden  lg:min-h-[300px] min-h-[200px] relative">
                   <Image
@@ -214,30 +293,74 @@ export default function Main() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col w-full items-center">
+      <div
+        id="my-work"
+        className="flex flex-col relative w-full bg-white items-center py-44"
+      >
+        <div
+          id="mover"
+          className=" bg-gray-300 duration-700 hidden border-4 rounded-3xl transition-all border-transparent absolute"
+        ></div>
         <div className="flex  w-[80%] max-w-[1300px] flex-col merienda items-center  overflow-hidden gap-4">
-          {dummyCards?.map((data) => {
+          {dummyCards?.map((data, index) => {
             return (
-              <div className="flex w-full lg:flex-row flex-col items-center gap-4">
+              <div
+                key={index}
+                className="flex w-full lg:flex-row flex-col items-center gap-4 pb-3"
+              >
                 {data?.subCard?.map((cards, i) => {
                   return (
                     <motion.div
-                    initial={{x:cards?.id == 0  ? -100 : cards?.id === 3 ? 100 : cards?.id === 1 ? 100 : -100  ,opacity:0}}
-                    whileInView={{x:0,opacity:1}}
-                    transition={{duration:0.6,delay:cards?.id == 0  ? 0 : cards?.id === 3 ? 0 : cards?.id === 1 ? 1 : 1 }}
-                      className={`flex flex-col gap-2 flex-1  lg:min-h-full  rounded-3xl overflow-hidden  p-7  group relative    bg-col_4   ${cards?.hover_color}`}
+                      key={i}
+                      onClick={() => window.open(cards?.href, "_blank")}
+                      initial={{
+                        x:
+                          cards?.id == 0
+                            ? -100
+                            : cards?.id === 3
+                            ? 100
+                            : cards?.id === 1
+                            ? 100
+                            : -100,
+                        opacity: 0,
+                      }}
+                      whileInView={{ x: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.6,
+                        delay:
+                          cards?.id == 0
+                            ? 0
+                            : cards?.id === 3
+                            ? 0
+                            : cards?.id === 1
+                            ? 1
+                            : 1,
+                      }}
+                      className={`flex rover flex-col gap-2 flex-1  cursor-pointer shadow-md  min-h-[330px] md:min-h-[200px] lg:min-h-full   rounded-3xl overflow-hidden  px-7 pt-7 pb-14  group relative    bg-col_4   ${cards?.hover_color}`}
                     >
+                      <Image
+                        alt="mark"
+                        src={require("../../../../public/assets/images/noise.webp")}
+                        fill
+                        objectFit="cover"
+                      />
                       <div className="flex items-center z-50 gap-2">
-                      {cards?.icon}
-                      <p className="text-xl font-bold">{cards?.badge}</p>
-
+                        {cards?.icon}
+                        <p className="text-xl font-bold">{cards?.badge}</p>
                       </div>
                       <div className="z-50  ">
-                        <p className={`z-50 transition-all delay-300`}>{cards.description}</p>
+                        <p className={`z-50 transition-all delay-300`}>
+                          {cards.description}
+                        </p>
                       </div>
-                      <div className={` w-14 h-14 group-hover:rounded-none gap-2 items-end justify-end pr-4 pb-4 flex  transition-all duration-500 group-hover:w-full group-hover:h-full ${cards?.buttonColor} rounded-tl-3xl absolute right-0 bottom-0`}>
-                        <p className="hidden group-hover:flex transition-all delay-0 duration-0">Checkout</p>
-                        <IconLink color="white"/>
+                      <div
+                        className={` w-14 h-14 group-hover:rounded-none gap-2  items-end justify-end pr-4 pb-4 flex  transition-all duration-500 group-hover:w-full group-hover:h-full ${cards?.buttonColor} rounded-tl-3xl absolute right-0 bottom-0`}
+                      >
+                        <p className="hidden group-hover:flex transition-all delay-0 duration-0">
+                          Open
+                        </p>
+                        <IoIosArrowForward size={20} color="white" />
                       </div>
                     </motion.div>
                   );
@@ -246,19 +369,20 @@ export default function Main() {
             );
           })}
         </div>
-      
       </div>
-      <div className="flex w-full items-center flex-col pt-28 bg-white  mt-10  z-50">
-        <div className="flex w-[70%] z-50 bg-white lg:min-w-[1000px] md:min-w-[500px] min-w-[300px] lg:pl-64 pl-32 flex-col border-l-2 border-black  gap-10 ">
+      <div className="flex w-full items-center flex-col pt-18 mb-44 bg-white  z-50">
+        <div className="flex w-[70%] max-w-[1200px] z-50 bg-white lg:min-w-[1000px] md:min-w-[500px] min-w-[300px] lg:pl-64 pl-32 flex-col border-l-2 border-black  gap-10 ">
           {dummyContent?.map((data, i) => {
             return (
               <div
                 key={i}
                 className="flex w-full flex-col relative merienda gap-2"
               >
-                <div className="flex items-center gap-3 lg:gap-10 sticky top-36 left-0 z-50 ml-[-113px] md:ml-[-141px] lg:ml-[-269px]">
+                <div className="flex items-center gap-3 lg:gap-3 sticky top-36 left-0 z-50 ml-[-113px] md:ml-[-141px] lg:ml-[-269px]">
                   <div className="w-6 h-6 bg-black border-4 border-white rounded-full"></div>
-                  <p className="text-black">2024</p>
+                  <p className="text-black w-28 lg:w-auto truncate">
+                    {data?.name}
+                  </p>
                 </div>
 
                 <div className="flex  flex-col items-start relative -mt-8 ">
@@ -291,11 +415,13 @@ export default function Main() {
             );
           })}
         </div>
-        <div className="w-full h-44   flex sticky bottom-0    justify-center items-center">
+        {/* <div className="w-full h-44   flex sticky bottom-0  z-10  justify-center items-center">
+        <Link  href={'https://www.linkedin.com/in/rahul-tyagi-b170b61a0'} target="_blank">
           <div className="hover:bg-col_3 text-2xl group border-col_3 bg-transparent transition-all cursor-pointer border-2 rounded-full px-5 py-3">
             <p className="group-hover:text-white text-col_3"> Contact</p>
           </div>
-        </div>
+        </Link>
+        </div> */}
       </div>
     </>
   );
@@ -305,7 +431,7 @@ const dummyCards = [
     id: 0,
     subCard: [
       {
-    id: 0,
+        id: 0,
 
         title:
           "Comprehensive Carer System with Multi-Role Access and Service Management (Next JS)",
@@ -317,11 +443,12 @@ const dummyCards = [
         buttonColor: "bg-col_10",
         hover_bgColor: "hover:bg-col_10",
         hover_color: "hover:text-col_9",
-       icon:<IconBrandNextjs size={60}/>,
+        icon: <TbBrandNextjs size={60} />,
         image: require("../../../../public/assets/images/tracing-images/carerog.jpg"),
+        href: "https://trunk2tale.com/new/signin",
       },
       {
-    id: 1,
+        id: 1,
 
         title:
           "Developed frontend for a mental health app for Android/IOS (React Native)",
@@ -332,17 +459,17 @@ const dummyCards = [
         buttonColor: "bg-col_3",
         hover_bgColor: "hover:bg-col_3",
         hover_color: "hover:text-col_6",
-       icon:<IconBrandReactNative size={60}/>,
+        icon: <IconBrandReactNative size={60} />,
         image: require("../../../../public/assets/images/tracing-images/ai.png"),
+        href: "https://mindamigo.com",
       },
-    
     ],
   },
   {
     id: 0,
     subCard: [
       {
-    id: 2,
+        id: 2,
 
         title: "License management system for test automation tool (ReactJS)",
         description:
@@ -353,11 +480,12 @@ const dummyCards = [
         buttonColor: "bg-col_11",
         hover_bgColor: "hover:bg-col_11",
         hover_color: "hover:text-col_8",
-       icon:<FaReact  size={60}/>,
+        icon: <FaReact size={60} />,
         image: require("../../../../public/assets/images/tracing-images/licenseTA.jpg"),
+        href: "https://soliterata.com",
       },
       {
-    id: 3,
+        id: 3,
 
         title:
           "Employee management system to manage mental health organizations (ReactJS)",
@@ -369,8 +497,9 @@ const dummyCards = [
         buttonColor: "bg-col_7",
         hover_bgColor: "hover:bg-col_7",
         hover_color: "hover:text-col_5",
-       icon:<FaReact  size={60}/>,
+        icon: <FaReact size={60} />,
         image: require("../../../../public/assets/images/tracing-images/licenseMA.jpg"),
+        href: "https://mindamigo.com",
       },
     ],
   },
@@ -415,6 +544,7 @@ const dummyContent = [
     description: `Developed a mental health mobile app that analyzes users' mental states and behaviors using integrated techniques like meditation and breathing exercises. The app suggests personalized podcasts from its course section and incorporates RESTful API integration for seamless functionality`,
     badge: "React Native",
     image: require("../../../../public/assets/images/tracing-images/ai.png"),
+    name: "Mindamigo",
   },
   {
     title:
@@ -423,6 +553,7 @@ const dummyContent = [
       "Developed a carer system for individuals needing care, featuring five roles: Loved One, Family Admin, Family Member, Carer, and Sponsor. The app includes services like story creation, mood tracking, chat, media uploads, health info management, and scheduling. A robust access management system and a comprehensive dashboard streamline functionality and content control",
     badge: "Next JS",
     image: require("../../../../public/assets/images/tracing-images/carerog.jpg"),
+    name: "Trunk2tale",
   },
   {
     title: "License management system for test automation tool (ReactJS)",
@@ -430,6 +561,7 @@ const dummyContent = [
       "Developed a fully functional license management system for a test automation tool, enabling license key generation, user registration, and license purchases. The system supports allocating licenses to multiple users, features a customizable purchasing interface, and integrates RESTful APIs for efficient functionality",
     badge: "React JS",
     image: require("../../../../public/assets/images/tracing-images/licenseTA.jpg"),
+    name: "SoliteraTA",
   },
   {
     title:
@@ -438,6 +570,7 @@ const dummyContent = [
       "Developed a comprehensive interface for a mental health application, allowing organizations to bulk-register employees and manage licenses with ease. Features include detailed license stats, a robust CRUD system for employee management (single or bulk via CSV upload), and Stripe integration for subscription purchases",
     badge: "React JS",
     image: require("../../../../public/assets/images/tracing-images/licenseMA.jpg"),
+    name: "Mindamigo Webapp",
   },
 ];
 
