@@ -19,7 +19,7 @@ export default function MainLayout({ children }) {
 
 const Footer = () => {
   return (
-    <div className="flex flex-col py-28 px-8 shadow-lg bg-col_9 relative transition merienda gap-4 items-center w-full">
+    <div className="flex flex-col pt-28 pb-8 px-8 shadow-lg bg-col_9 relative transition merienda gap-4 items-center w-full">
       <motion.p
         initial={{ y: -40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -60,10 +60,10 @@ const Footer = () => {
       </motion.div>
       <motion.p
         initial={{ y: -40, opacity: 0 }}
-        transition={{ delay: 1 }}
+        transition={{ delay: 1.9 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        className="text-sm absolute bottom-4 font-bold text-col_10 text-center lg:w-[39%]"
+        className="text-sm  font-bold text-col_10 text-center mt-14"
       >
         ©HandCrafted by Rahul Kumar 2024 - Today | All rights reserved
       </motion.p>
