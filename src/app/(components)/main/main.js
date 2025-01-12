@@ -155,7 +155,7 @@ export default function Main() {
 
         <div
           id="overlap"
-          className="flex items-center  justify-center -mt-96 px-[35px]  lg:-mt-80  pb-36 w-full gap-8 z-50 lg:flex-row flex-col"
+          className="flex items-center  justify-center -mt-96 lg:px-[35px]  lg:-mt-80  pb-36 w-full gap-8 z-50 lg:flex-row flex-col"
         >
           {overLapCards?.map((data, i) => {
             return (
