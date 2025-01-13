@@ -125,7 +125,7 @@ export default function Main() {
               </div>
             </div>
           </div>
-          <AuroraBackground showRadialGradient={true}></AuroraBackground>
+          <AuroraBackground showRadialGradient={false} className={`lg:flex sm:flex hidden`}></AuroraBackground>
           {/* <div className="flex flex-1 h-full flex-col items-center w-full "></div> */}
         </div>
         <div className="flex flex-col merienda antialiased bg-white  items-center justify-center gap-9 w-full h-[1000px] sticky bottom-0">
@@ -155,7 +155,7 @@ export default function Main() {
 
         <div
           id="overlap"
-          className="flex items-center  justify-center -mt-96 lg:px-[35px]  lg:-mt-80  pb-36 w-full gap-8 z-50 lg:flex-row flex-col"
+          className="flex items-center  justify-center -mt-96  lg:px-[35px]  lg:-mt-80  pb-36 w-full gap-8 z-50 lg:flex-row flex-col"
         >
           {overLapCards?.map((data, i) => {
             return (
@@ -261,7 +261,7 @@ export default function Main() {
           {shuffleCards?.map((data, i) => {
             return (
               <div
-                className={`flex w-[90%] lg:flex-row merienda ${data?.bgColor} ${data?.color} top-24 flex-col-reverse rounded-[40px] items-center lg:p-20 pb-12 px-12 pt-4 sm:gap-10 lg:gap-32 gap-0 sticky `}
+                className={`flex w-[90%] lg:flex-row merienda ${data?.bgColor} ${data?.color} ${i === 1 ? 'top-20' : "top-16"} flex-col-reverse rounded-[40px] items-center lg:p-20 pb-12 px-12 pt-4 sm:gap-10 lg:gap-32 gap-4 sticky `}
                 key={i}
               >
                 <div className="flex flex-col flex-1 gap-5 items-start">
@@ -278,7 +278,7 @@ export default function Main() {
                     </div>
                   </Link>
                 </div>
-                <div className="flex flex-col lg:flex-1 w-full  rounded-md overflow-hidden  lg:min-h-[300px] min-h-[200px] relative">
+                <div className="flex flex-col lg:flex-1 w-full  rounded-md overflow-hidden lg:min-w-[55%] lg:min-h-[340px] md:min-w-[100%]  min-w-[200px]  min-h-[200px] relative">
                   <Image
                     src={data?.src}
                     alt="mark"
@@ -370,7 +370,7 @@ export default function Main() {
           })}
         </div>
       </div>
-      <div className="flex w-full items-center flex-col pt-18 pb-[200px] bg-white  z-50">
+      <div className="flex w-full items-center flex-col pt-18 pb-[200px]  bg-white  z-50">
         <div className="flex w-[70%] max-w-[1200px] z-50 bg-white lg:min-w-[1000px] md:min-w-[500px] min-w-[300px] lg:pl-64 pl-32 flex-col border-l-2 border-black  gap-10 ">
           {dummyContent?.map((data, i) => {
             return (

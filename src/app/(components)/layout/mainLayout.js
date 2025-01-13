@@ -11,10 +11,17 @@ export default function MainLayout({ children }) {
       id="window"
       className="w-full h-lvh flex flex-col bg-white  items-center "
     >
+      {/* <Header/> */}
       {children}
       <Footer />
     </div>
   );
+}
+
+const Header = ()=>{
+  return(
+    <div className="w-full flex items-center backdrop-blur-md min-h-14 fixed top-0 z-50"></div>
+  )
 }
 
 const Footer = () => {
