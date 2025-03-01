@@ -125,7 +125,7 @@ export default function Main() {
               </div>
             </div>
           </div>
-          <AuroraBackground showRadialGradient={false} className={`lg:flex sm:flex hidden`}></AuroraBackground>
+          <AuroraBackground showRadialGradient={true} className={`lg:flex sm:flex hidden`}></AuroraBackground>
           {/* <div className="flex flex-1 h-full flex-col items-center w-full "></div> */}
         </div>
         <div className="flex flex-col merienda antialiased bg-white  items-center justify-center gap-9 w-full h-[1000px] sticky bottom-0">
